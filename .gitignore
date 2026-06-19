@@ -20,5 +20,16 @@ dist/
 .DS_Store
 Thumbs.db
 
+# Temporary Colab upload bundle (a duplicate of the project for manual upload)
+colab_upload/
+
+# Executed scratch notebook saved at repo root (the canonical runner lives in
+# notebooks/). Results from it are captured in README + benchmarks/.
+/colab_runner.ipynb
+
 # NOTE: benchmark CSVs and figures/*.png are intentionally NOT ignored —
 # commit the REAL ones generated on Colab so the README shows true results.
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore

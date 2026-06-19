@@ -40,11 +40,11 @@ def plot_memory(plt):
                 xs.append(int(r["N"]))
                 ys.append(y)
         if xs:
-            plt.plot(xs, ys, marker="o", label=impl)
+            plt.plot(xs, ys, marker="o", linewidth=2, markersize=6, label=impl)
     plt.yscale("log")
     plt.xlabel("sequence length N")
     plt.ylabel("peak VRAM (MB, log scale)")
-    plt.title("Peak memory vs sequence length\n(reference OOMs at large N -> line ends)")
+    plt.title("Peak memory vs sequence length\nlinear O(N) kernels vs quadratic O(N²) reference")
     plt.grid(True, which="both", alpha=0.3)
     plt.legend()
     out = os.path.join(FIG_DIR, "memory_vs_seqlen.png")
@@ -72,7 +72,7 @@ def plot_latency(plt):
     plt.figure(figsize=(7, 5))
     for impl, d in by_impl.items():
         if d["x"]:
-            plt.plot(d["x"], d["y"], marker="o", label=impl)
+            plt.plot(d["x"], d["y"], marker="o", linewidth=2, markersize=6, label=impl)
     plt.xscale("log", base=2)
     plt.yscale("log")
     plt.xlabel("sequence length N (log2)")
