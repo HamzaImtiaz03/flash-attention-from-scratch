@@ -1,5 +1,7 @@
 # FlashAttention-2 from scratch (forward + backward)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR-USERNAME/flash-attention-from-scratch/blob/main/notebooks/colab_runner.ipynb)
+
 > A from-scratch implementation of FlashAttention-2 — in **Triton** and in **raw CUDA** —
 > built to *understand* the algorithm, **proven correct** against a pure-PyTorch reference
 > (including a float64 `gradcheck` on the backward pass), and **benchmarked honestly**.
