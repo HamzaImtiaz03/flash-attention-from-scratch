@@ -2,6 +2,8 @@
 # Pin nothing aggressively so the notebook works on whatever Colab currently has.
 torch>=2.1
 triton>=2.1        # bundled with Colab's torch; listed for completeness
+ninja             # REQUIRED to JIT-compile the CUDA extension (csrc/); some
+                  # Colab runtimes don't ship it -> build fails without this
 numpy
 matplotlib
 pytest
