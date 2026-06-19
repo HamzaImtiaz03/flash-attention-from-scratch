@@ -1,0 +1,11 @@
+# Core (Colab free-tier T4 already ships compatible CUDA torch + triton).
+# Pin nothing aggressively so the notebook works on whatever Colab currently has.
+torch>=2.1
+triton>=2.1        # bundled with Colab's torch; listed for completeness
+numpy
+matplotlib
+pytest
+# Optional: official kernel for the latency comparison in Stage 5.
+# Not always installable on the free runtime; bench_latency.py falls back to
+# torch SDPA when this import fails.
+# flash-attn
