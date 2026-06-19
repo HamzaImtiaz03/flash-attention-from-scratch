@@ -10,8 +10,6 @@
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
   m.doc() = "From-scratch FlashAttention CUDA forward (T4 / sm_75, fp16+fp32).";
-  m.def("fwd", &flash_fwd,
-        "FlashAttention forward (returns {output, logsumexp})",
-        py::arg("q"), py::arg("k"), py::arg("v"),
-        py::arg("causal"), py::arg("sm_scale"));
+  // Positional binding (matches cuda_attn.py: ext.fwd(q, k, v, causal, sm_scale)).
+  m.def("fwd", &flash_fwd, "FlashAttention forward (returns {output, logsumexp})");
 }

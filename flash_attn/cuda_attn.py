@@ -49,7 +49,7 @@ def get_extension():
             "-U__CUDA_NO_HALF2_OPERATORS__",
         ],
         extra_cflags=["-O3"],
-        verbose=False,
+        verbose=True,  # show the real nvcc/g++ output; hidden errors are painful
     )
     return _EXT
 
