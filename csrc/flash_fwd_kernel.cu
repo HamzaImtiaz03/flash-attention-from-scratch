@@ -75,8 +75,10 @@ __global__ void flash_fwd_kernel(FlashFwdParams p) {
 
   // For causal masking, the largest key index any row in this block can attend
   // to is (block base + BLOCK_M - 1); cap the key sweep there.
-  const int n_end =
-      p.causal ? min(N, blockIdx.x * (int)blockDim.x + (int)blockDim.x) : N;
+  // NB: keep both args to min() the same type (int) — min(int, unsigned) is an
+  // ambiguous overload in CUDA and fails to compile.
+  const int block_end = (int)((blockIdx.x + 1u) * blockDim.x);
+  const int n_end = p.causal ? min(N, block_end) : N;
 
   for (int start_n = 0; start_n < n_end; start_n += bn) {
     // Cooperatively stage K and V tiles into shared memory (as fp32).
